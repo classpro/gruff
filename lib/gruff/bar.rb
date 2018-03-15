@@ -78,7 +78,7 @@ protected
         right_x = left_x + @bar_width * @bar_spacing
         # y
         conv = []
-        conversion.get_left_y_right_y_scaled( data_point, conv )
+        conversion.get_left_y_right_y_scaled(data_point, conv)
 
         # create new bar
         @d = @d.fill data_row[DATA_COLOR_INDEX]
@@ -93,7 +93,8 @@ protected
         draw_label(label_center - (@center_labels_over_point ? @bar_width / 2.0 : 0.0), point_index)
         if @show_labels_for_bar_values
           val = (@label_formatting || '%.2f') % @norm_data[row_index][3][point_index]
-          draw_value_label(left_x + (right_x - left_x)/2, conv[0]-30, val.commify, true)
+          label_position = (val.match(/^-?\d+\.?\d*$/).to_s.to_f < 0 ? conv[0]+30 : conv[0]-30)
+          draw_value_label(left_x + (right_x - left_x)/2, label_position, val.commify, true)
         end
       end
 
