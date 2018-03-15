@@ -93,7 +93,7 @@ protected
         draw_label(label_center - (@center_labels_over_point ? @bar_width / 2.0 : 0.0), point_index)
         if @show_labels_for_bar_values
           val = (@label_formatting || '%.2f') % @norm_data[row_index][3][point_index]
-          label_position = (val.match(/^-?\d+\.?\d*$/).to_s.to_f < 0 ? conv[0]+30 : conv[0]-30)
+          label_position = (val.match(/^-?\d+\.?\d*$/).to_s.to_f < 0 ? conv[0]+25 : conv[0]-25)
           draw_value_label(left_x + (right_x - left_x)/2, label_position, val.commify, true)
         end
       end
